@@ -92,7 +92,7 @@ namespace Sims3Console
                 {
                     foreach (var writer in logWriters.Values)
                     {
-                        writer.WriteLine($"[{DateTime.Now:u}] OUTPUT: {str ?? "<null>"}");
+                        writer.WriteLine($"[{DateTime.Now:G}] OUTPUT: {str ?? "<null>"}");
                         writer.Flush();
                     }
                 }
@@ -112,7 +112,8 @@ namespace Sims3Console
                 string logsDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
                 Directory.CreateDirectory(logsDir);
 
-                string logPath = Path.Combine(logsDir, $"{baseName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log");
+                string timestampSafe = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                string logPath = Path.Combine(logsDir, $"{baseName}_{timestampSafe}.log");
 
                 lock (logLock)
                 {
