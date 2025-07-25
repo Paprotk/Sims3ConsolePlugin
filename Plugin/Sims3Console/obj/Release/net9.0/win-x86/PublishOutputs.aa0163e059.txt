@@ -1,1 +1,0 @@
-C:\Users\Arek\RiderProjects\Sims3Console\Sims3Console\bin\Release\net9.0\win-x86\publish\Sims3Console.dll

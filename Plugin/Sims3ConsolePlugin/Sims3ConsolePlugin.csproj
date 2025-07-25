@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Library</OutputType>
+        <PublishAot>true</PublishAot> <!-- Enable Native AOT -->
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IlcDisableReflection>true</IlcDisableReflection>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <RootNamespace>Sims3Console</RootNamespace>
+    </PropertyGroup>
+
+</Project>

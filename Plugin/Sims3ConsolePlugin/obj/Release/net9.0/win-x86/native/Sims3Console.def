@@ -1,0 +1,8 @@
+EXPORTS
+   DotNetRuntimeDebugHeader DATA
+   ICallSetup
+   ConsoleCreate
+   ConsoleClose
+   ConsoleWriteLine
+   ConsoleStartLogging
+   ConsoleStopLogging
