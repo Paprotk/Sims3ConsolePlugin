@@ -22,6 +22,12 @@ public static class Console
 
     [MethodImpl(MethodImplOptions.InternalCall)]
     public static extern unsafe void StopLogging(sbyte* filenameUtf8);
+	
+	[MethodImpl(MethodImplOptions.InternalCall)]
+    public static extern void Clear();
+	
+	[MethodImpl(MethodImplOptions.InternalCall)]
+    public static extern void Beep();
     
     public static unsafe void WriteLine(string text)
     {
@@ -104,5 +110,9 @@ public static class Console
     public static void StartLogging(string filename) { /* Dummy - does nothing */ }
     
     public static void StopLogging(string filename) { /* Dummy - does nothing */ }
+	
+	public static void Clear()
+	
+	public static void Beep()
 }
 #endif

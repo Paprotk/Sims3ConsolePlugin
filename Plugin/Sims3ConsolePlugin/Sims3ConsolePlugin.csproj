@@ -13,4 +13,16 @@
         <RootNamespace>Sims3Console</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="mscorlib">
+        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\mscorlib.dll</HintPath>
+      </Reference>
+      <Reference Include="System">
+        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\System.dll</HintPath>
+      </Reference>
+      <Reference Include="System.Xml">
+        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\System.Xml.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
