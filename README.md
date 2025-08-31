@@ -86,5 +86,7 @@ The filename is timestamped to avoid overwriting previous logs.
 Remember to call `Console.StopLogging("filename")` or use `ConsoleStopLogging <filename>`, after you finish logging to properly close the log file and flush any remaining output.
 The console window title dynamically updates to show currently active loggers, providing visual feedback about logging status.
 
+![Logging Example](https://raw.githubusercontent.com/Paprotk/Sims3ConsolePlugin/Developement/Assets/LoggingExample.png)
+
 ## Licenses
 This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.
