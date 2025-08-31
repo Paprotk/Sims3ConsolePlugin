@@ -12,15 +12,15 @@ public static class Console
 {
     static Console()
     {
-        if (!Commands.sGameCommands.mCommands.ContainsKey("Clear"))
+        if (!Commands.sGameCommands.mCommands.ContainsKey("ConsoleCreate"))
         {
-            Commands.sGameCommands.Register("ConsoleCreate", "- Creates console window.", Commands.CommandType.General, ConsoleCheats.OnCreate, true);
-            Commands.sGameCommands.Register("ConsoleClose", "- Closes console window.", Commands.CommandType.General, ConsoleCheats.OnClose, true);
-            Commands.sGameCommands.Register("ConsoleWriteLine", "- Writes text to a console window.", Commands.CommandType.General, ConsoleCheats.OnWriteLine, true);
-            Commands.sGameCommands.Register("ConsoleClear", "- Clear console window.", Commands.CommandType.General, ConsoleCheats.OnClear, true);
-            Commands.sGameCommands.Register("ConsoleStartLogging", "- Starts logging console window.", Commands.CommandType.General, ConsoleCheats.OnStartLogging, true);
-            Commands.sGameCommands.Register("ConsoleStopLogging", "- Stops logging console window.", Commands.CommandType.General, ConsoleCheats.OnStopLogging, true);
-            Commands.sGameCommands.Register("ConsoleBeep", "- Beeps using console window.", Commands.CommandType.General, ConsoleCheats.OnBeep, true);
+            Commands.sGameCommands.Register("ConsoleCreate", "Manually creates the console window (if not already opened). Usage: ConsoleCreate", Commands.CommandType.General, ConsoleCheats.OnCreate, false);
+            Commands.sGameCommands.Register("ConsoleClose", "Closes the console window and stops all logging. Usage: ConsoleClose", Commands.CommandType.General, ConsoleCheats.OnClose, false);
+            Commands.sGameCommands.Register("ConsoleWriteLine", "Prints a message to the native console window. Usage: ConsoleWriteLine <message>", Commands.CommandType.General, ConsoleCheats.OnWriteLine, false);
+            Commands.sGameCommands.Register("ConsoleClear", "Clears the console buffer and corresponding console window of display information. Usage: ConsoleClear", Commands.CommandType.General, ConsoleCheats.OnClear, false);
+            Commands.sGameCommands.Register("ConsoleStartLogging", "Starts logging all console output to a file. Usage: ConsoleStartLogging <filename>", Commands.CommandType.General, ConsoleCheats.OnStartLogging, false);
+            Commands.sGameCommands.Register("ConsoleStopLogging", "Stops logging to the specified log file. Usage: ConsoleStopLogging <filename>", Commands.CommandType.General, ConsoleCheats.OnStopLogging, false);
+            Commands.sGameCommands.Register("ConsoleBeep", "Plays the sound of a beep through the console speaker. Usage: ConsoleBeep", Commands.CommandType.General, ConsoleCheats.OnBeep, false);
         }
     }
 
@@ -244,11 +244,6 @@ public static class Console
     
     public static void Close() { /* Dummy - does nothing */ }
     
-    public static void WriteLine() { /* Dummy - does nothing */ }
-    
-    public static void StartLogging() { /* Dummy - does nothing */ }
-    
-    public static void StopLogging() { /* Dummy - does nothing */ }
     public static void WriteLine(string text) { /* Dummy - does nothing */ }
     
     public static void StartLogging(string filename) { /* Dummy - does nothing */ }
