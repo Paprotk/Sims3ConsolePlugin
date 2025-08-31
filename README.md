@@ -41,7 +41,7 @@ The real console class is used and this requires that Sims3ConsolePlugin.dll is 
 A dummy console class is used that does nothing, preventing game crashes if the DLL is missing.
 This allows you to leave Console.* calls in your code, without needing to remove or comment them before release.
 
-The in-game [cheats](#cheats) are automatically registered when any Console [method](#method) is first called. This happens because the static constructor of the Console class executes when any static member is accessed.
+The in-game [cheats](#cheats) are automatically registered when any Console [method](#methods) is first called. This happens because the static constructor of the Console class executes when any static member is accessed.
 
 #### Note: Closing the console window using the X button will also terminate the game.
 
