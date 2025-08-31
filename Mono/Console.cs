@@ -52,7 +52,7 @@ public static class Console
     {
         if (!_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is not present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[WriteLine] The Console is not present!");
             return;
         }
         using (Utf8Ptr utf8Ptr = text) // Implicit conversion from string to Utf8Ptr
@@ -65,7 +65,7 @@ public static class Console
     {
         if (!_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is not present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[StartLogging] The Console is not present!");
             return;
         }
         using (Utf8Ptr utf8Ptr = filename) 
@@ -76,6 +76,11 @@ public static class Console
     
     public static unsafe void StopLogging(string filename)
     {
+        if (!_IsPresent())
+        {
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[StopLogging] The console is not present! Any logging done before the console was closed is already saved to a file.");
+            return;
+        }
         using (Utf8Ptr utf8Ptr = filename)
         {
             _StopLogging(utf8Ptr);
@@ -86,7 +91,7 @@ public static class Console
     {
         if (_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is already present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[Create] The Console is already present!");
         }
         else
         {
@@ -98,7 +103,7 @@ public static class Console
     {
         if (!_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is not present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[Close] The Console is not present!");
         }
         else
         {
@@ -110,7 +115,7 @@ public static class Console
     {
         if (!_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is not present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[Clear] The Console is not present!");
         }
         else
         {
@@ -123,7 +128,7 @@ public static class Console
     {
         if (!_IsPresent())
         {
-            SimpleMessageDialog.Show("Sims3ConsolePlugin","Console is not present!");
+            SimpleMessageDialog.Show("Sims3ConsolePlugin","[Beep] The Console is not present!");
         }
         else
         {
@@ -147,6 +152,10 @@ public static class Console
         
         public static int OnWriteLine(object[] parameters)
         {
+            if (parameters == null)
+            {
+                SimpleMessageDialog.Show("Sims3ConsolePlugin","[WriteLine] No parameters provided!");
+            }
             if (parameters != null && parameters.Length > 0)
             {
                 StringBuilder sb = new StringBuilder();
@@ -173,7 +182,11 @@ public static class Console
         
         public static int OnStartLogging(object[] parameters)
         {
-            if (parameters != null && parameters.Length > 0 && parameters[0] != null)
+            if (parameters.Length == 0)
+            {
+                SimpleMessageDialog.Show("Sims3ConsolePlugin","[StartLogging] No filename provided!");
+            }
+            if (parameters.Length > 0 && parameters[0] != null)
             {
                 StartLogging(parameters[0].ToString());
             }
@@ -182,7 +195,11 @@ public static class Console
 
         public static int OnStopLogging(object[] parameters)
         {
-            if (parameters != null && parameters.Length > 0 && parameters[0] != null)
+            if (parameters.Length == 0)
+            {
+                SimpleMessageDialog.Show("Sims3ConsolePlugin","[StopLogging] No filename provided!");
+            }
+            if (parameters.Length > 0 && parameters[0] != null)
             {
                 StopLogging(parameters[0].ToString());
             }
