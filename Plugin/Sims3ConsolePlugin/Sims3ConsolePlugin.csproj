@@ -1,28 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <OutputType>Library</OutputType>
-        <PublishAot>true</PublishAot> <!-- Enable Native AOT -->
+        <PublishAot>true</PublishAot>
         <RuntimeIdentifier>win-x86</RuntimeIdentifier>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <IlcDisableReflection>true</IlcDisableReflection>
         <InvariantGlobalization>true</InvariantGlobalization>
         <RootNamespace>Sims3Console</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Reference Include="mscorlib">
-        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\mscorlib.dll</HintPath>
-      </Reference>
-      <Reference Include="System">
-        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\System.dll</HintPath>
-      </Reference>
-      <Reference Include="System.Xml">
-        <HintPath>..\..\..\..\Documents\SharpDevelop Projects\DLLS\System.Xml.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
 </Project>

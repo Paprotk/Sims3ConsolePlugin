@@ -11,6 +11,7 @@ namespace Sims3Console
         private static readonly object logLock = new object();
         private static Dictionary<string, StreamWriter> logWriters = new();
         private static bool IsConsolePresent() => GetConsoleWindow() != IntPtr.Zero;
+        private static bool _isTopmost = false; // New: relevant for behavior
         
         [UnmanagedCallersOnly(EntryPoint = "ConsoleIsPresent", CallConvs = new[] { typeof(CallConvStdcall) })]
         public static int ConsoleIsPresent()
@@ -31,8 +32,26 @@ namespace Sims3Console
                 IntPtr hWnd = GetConsoleWindow();
                 if (hWnd != IntPtr.Zero)
                 {
-                    SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0,
-                        SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                    // Start minimized
+                    ShowWindow(hWnd, SW_SHOWMINNOACTIVE);
+
+                    // Monitor for focus to set topmost
+                    Thread monitor = new Thread(() => 
+                    {
+                        while (IsConsolePresent())
+                        {
+                            if (GetForegroundWindow() == hWnd && !_isTopmost)
+                            {
+                                SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0,
+                                    SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+                                _isTopmost = true;
+                                break;
+                            }
+                            Thread.Sleep(500);
+                        }
+                    });
+                    monitor.IsBackground = true;
+                    monitor.Start();
                 }
             }
         }
@@ -226,6 +245,12 @@ namespace Sims3Console
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetConsoleWindow();
         
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool SetWindowPos(
             IntPtr hWnd,
@@ -240,5 +265,6 @@ namespace Sims3Console
         private const uint SWP_NOMOVE = 0x0002;
         private const uint SWP_NOSIZE = 0x0001;
         private const uint SWP_SHOWWINDOW = 0x0040;
+        private const int SW_SHOWMINNOACTIVE = 7;
     }
 }
