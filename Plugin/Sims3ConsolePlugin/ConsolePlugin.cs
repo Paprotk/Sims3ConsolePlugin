@@ -135,7 +135,7 @@ namespace Sims3Console
                 {
                     foreach (var writer in logWriters.Values)
                     {
-                        writer.WriteLine($"[{DateTime.Now:G}] OUTPUT: {str ?? "<null>"}");
+                        writer.WriteLine($"[{DateTime.Now:g}] OUTPUT: {str ?? "<null>"}");
                         writer.Flush();
                     }
                 }

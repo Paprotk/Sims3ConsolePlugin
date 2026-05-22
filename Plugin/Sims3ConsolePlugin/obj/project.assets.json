@@ -619,18 +619,6 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[9.0.12, 9.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[9.0.12, 9.0.12]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[9.0.12, 9.0.12]"
-          },
-          {
             "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
             "version": "[9.0.12, 9.0.12]"
           }
